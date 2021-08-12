@@ -1,10 +1,123 @@
 .mainViewContainer {
   margin-top: -62px;
-  background-color: rgb(221, 221, 221);
+  background-color: #f2efee;
   flex: 1;
   height: 100vh;
 }
 
 .mainViewWrapper {
   margin-top: 62px;
+  height: calc(100% - 62px);
+}
+
+.image {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+  position: relative;
+  background-color: rgb(185, 185, 185);
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  opacity: 0.4;
+}
+
+.name {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 10px;
+  background: linear-gradient(to right bottom, #fad26c, #f54e42);
+  text-transform: uppercase;
+  right: 0;
+  bottom: 0;
+}
+
+.name p {
+  margin: 0;
+}
+
+/* //MiddlePart */
+
+.middlePart {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.middlePart > div {
+  display: flex;
+  gap: 30px;
+}
+
+.time,
+.servings {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon,
+.iconSign,
+.heartIcon {
+  color: rgb(199, 51, 38);
+  font-size: 18px;
+}
+
+.iconSign {
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 8px;
+}
+
+.favourites {
+  position: relative;
+  transition: all 0.3s ease-in;
+}
+
+.favourites .showOnHover,
+.favourites .removeOnHover {
+  display: none;
+  position: absolute;
+  top: -50px;
+  left: -65px;
+  width: 130px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: rgb(255, 248, 248);
+}
+
+.favourites .removeOnHover {
+  width: 175px;
+  left: -85px;
+}
+
+.heartIcon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.favourites:hover .showOnHover,
+.favourites:hover .removeOnHover {
+  display: block;
 }

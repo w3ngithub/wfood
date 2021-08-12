@@ -11,9 +11,7 @@
 .firstPart {
   display: flex;
   justify-content: space-between;
-  /* background-color: black; */
   width: 58vw;
-  /* flex: 1 */
 }
 
 .addPart {

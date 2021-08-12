@@ -1,10 +1,8 @@
-import React, {useEffect} from "react"
 import {SEARCHED_DATA} from '../actions/actionTypes'
 
 const initialState = {
     recipes: []
 }
-
 
 const reducer = (state = initialState,action) => {
  switch(action.type){
