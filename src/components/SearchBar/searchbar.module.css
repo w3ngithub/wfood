@@ -1,0 +1,26 @@
+.searchContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input{
+    border: none;
+    outline: none;
+    padding: 10px 14px;
+    border-radius: 50px;
+    width: 300px;
+}
+
+.input:focus{
+    box-shadow: 2px 2px 10px rgba(0,0,0,.4)
+}
+
+.searchIcon{
+    font-size: 20px;
+    cursor: pointer
+}
+
+.searchIcon:hover{
+    transform: scale(1.1)
+}

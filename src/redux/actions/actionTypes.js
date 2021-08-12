@@ -1,0 +1,1 @@
+export const SEARCHED_DATA = 'SEARCHED_DATA'

@@ -1,0 +1,40 @@
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 40px;
+  background: linear-gradient(#f85032, #e4392a);
+  color: white;
+  position: relative;
+}
+
+.firstPart {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: black; */
+  width: 58vw;
+  /* flex: 1 */
+}
+
+.addPart {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 0px 20px;
+}
+
+.addPart p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.addPart p:hover {
+  color: rgb(221, 221, 221);
+}
+
+.navIcon {
+  font-size: 20px;
+}

@@ -1,0 +1,10 @@
+.mainViewContainer {
+  margin-top: -62px;
+  background-color: rgb(221, 221, 221);
+  flex: 1;
+  height: 100vh;
+}
+
+.mainViewWrapper {
+  margin-top: 62px;
+}
