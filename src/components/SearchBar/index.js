@@ -11,11 +11,13 @@ const Search = () => {
 
   async function fetchData(value, e) {
     e.preventDefault();
-    const response = await fetch(
-      `https://forkify-api.herokuapp.com/api/search?q=${value}`
-    );
-    const data = await response.json();
-    dispatch(searchedData(data.recipes));
+    if (searchedValue.trim() !== "") {
+      const response = await fetch(
+        `https://forkify-api.herokuapp.com/api/search?q=${value}`
+      );
+      const data = await response.json();
+      dispatch(searchedData(data.recipes));
+    }
   }
 
   return (

@@ -6,6 +6,7 @@
   background: linear-gradient(#f85032, #e4392a);
   color: white;
   position: relative;
+  z-index: 6;
 }
 
 .firstPart {
@@ -19,6 +20,7 @@
   align-items: center;
   gap: 50px;
   padding: 0px 20px;
+  position: relative;
 }
 
 .addPart p {
@@ -35,4 +37,72 @@
 
 .navIcon {
   font-size: 20px;
+}
+
+/* //Notification */
+
+.notification {
+  top: 62px;
+  right: 0px;
+  z-index: 3;
+  width: 350px;
+  opacity: 0;
+  position: absolute;
+  background-color: white;
+  transition: all 0.5s ease-in;
+  max-height: 450px;
+  overflow-y: auto;
+  height: 0;
+}
+
+.favouriteList {
+  line-height: 62px;
+  margin: 0;
+}
+
+.favouriteList > div {
+  line-height: 20px;
+}
+
+.favouriteList:hover .notification {
+  opacity: 1;
+  height: auto;
+}
+
+.recipeWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in;
+  border-bottom: 1px solid rgba(233, 193, 112, 0.4);
+}
+
+.recipeWrapper > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipeWrapper img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.recipeWrapper:hover {
+  background-color: rgba(233, 193, 112, 0.2);
+}
+
+.closeIcon {
+  z-index: 5;
+  color: grey;
+  font-size: 16px;
+  position: absolute;
+  right: 5px;
+}
+
+.closeIcon:hover {
+  color: red;
 }

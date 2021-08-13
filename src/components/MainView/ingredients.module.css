@@ -1,0 +1,38 @@
+.ingredientContainer {
+  color: #615551;
+  text-align: center;
+  width: 100%;
+  background-color: #f1efef;
+}
+
+.ingredientWrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0 30px 0;
+}
+
+.ingredientContainer h2 {
+  color: #e4392a;
+  margin-bottom: 50px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: left;
+  grid-column-gap: 60px;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.circleIcon {
+  min-width: 15px;
+  width: 15px;
+  margin-top: 5px;
+  color: #f38e82;
+}

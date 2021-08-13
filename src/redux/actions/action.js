@@ -1,6 +1,7 @@
 import {
   GET_DATA,
   SEARCHED_DATA,
+  FILTERED_DATA,
   ADD_TO_FAVOURITE,
   REMOVE_FROM_FAVOURITE,
 } from "./actionTypes";

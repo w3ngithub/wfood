@@ -1,20 +1,20 @@
-import {SEARCHED_DATA} from '../actions/actionTypes'
+import { SEARCHED_DATA, FILTERED_DATA } from "../actions/actionTypes";
 
 const initialState = {
-    recipes: []
-}
+  recipes: [],
+};
 
-const reducer = (state = initialState,action) => {
- switch(action.type){
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
     case SEARCHED_DATA:
-        return{
-            ...state,
-            recipes: action.data
-        }
+      return {
+        ...state,
+        recipes: action.data,
+      };
 
     default:
-        return state
- }
- }
+      return state;
+  }
+};
 
-export default reducer
+export default reducer;
