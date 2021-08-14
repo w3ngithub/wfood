@@ -17,15 +17,20 @@ const MainView = () => {
 
   let singleRecipe = useSelector((state) => state.getReducer.singleRecipe);
 
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(2);
   const [favourite, setFavourite] = useState([]);
+  const [increaseOne, setIncreaseOne] = useState(0);
 
   function addNumber() {
     setCount((prevState) => prevState + 1);
+    setIncreaseOne(increaseOne + 0.5);
   }
 
   function subtractNumber() {
-    if (count !== 1) setCount((prevState) => prevState - 1);
+    if (count !== 1) {
+      setCount((prevState) => prevState - 1);
+      setIncreaseOne(increaseOne - 0.5);
+    }
   }
 
   async function addToFavourite(id) {
@@ -138,7 +143,10 @@ const MainView = () => {
               </div>
             </div>
 
-            <Ingredients singleRecipe={singleRecipe} />
+            <Ingredients
+              singleRecipe={singleRecipe}
+              increaseOne={increaseOne}
+            />
           </>
         )}
       </div>

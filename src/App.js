@@ -1,10 +1,12 @@
 import "./App.css";
-import React, { useEffect } from "react";
 import Nav from "./components/NavBar";
 import Sidebar from "./components/SideBar";
 import MainView from "./components/MainView";
+import React, { useEffect, useState } from "react";
 
 function App() {
+  const [selectedRecipe, setSelectedRecipe] = useState({});
+
   useEffect(() => {
     const localStorageID = JSON.parse(localStorage.getItem("ids"));
     if (!localStorageID) {
@@ -14,9 +16,9 @@ function App() {
 
   return (
     <div>
-      <Nav />
+      <Nav {...{ selectedRecipe, setSelectedRecipe }} />
       <div className="App">
-        <Sidebar />
+        <Sidebar {...{ selectedRecipe, setSelectedRecipe }} />
         <MainView />
       </div>
     </div>

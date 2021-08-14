@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFavourite } from "../../redux/actions/action";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-const Nav = () => {
+const Nav = ({ setSelectedRecipe }) => {
   const dispatch = useDispatch();
 
   let favouriteList = useSelector((state) => state.favouriteReducer.favourites);
@@ -65,7 +65,10 @@ const Nav = () => {
               <div
                 key={fav.recipe_id}
                 className={classes.recipeWrapper}
-                onClick={() => getSingleRecipe(fav.recipe_id)}
+                onClick={() => {
+                  getSingleRecipe(fav.recipe_id);
+                  setSelectedRecipe({});
+                }}
               >
                 <img src={fav.image_url} alt="Food Image" />
                 <div>
