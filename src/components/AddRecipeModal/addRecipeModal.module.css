@@ -1,0 +1,123 @@
+.modalContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.modalBackground {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(3px);
+  transition: all 0.5s;
+}
+
+.modalWrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: 70%;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 15px 30px;
+  transform: translate(-50%, -50%);
+  color: #615551;
+  border-radius: 8px;
+}
+
+.twoForms {
+  display: flex;
+  gap: 0px;
+}
+
+.form .row {
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: 1fr 2.8fr;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.row input {
+  width: 250px;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  outline: none;
+}
+
+.row input::placeholder {
+  font-size: 12px;
+}
+
+.row input:focus {
+  border: 1px solid #000;
+}
+
+.imageInput {
+  display: none;
+}
+
+.imageBtn,
+.addIngredientBtn {
+  width: 80px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: white;
+  background: linear-gradient(#e24428, #cc3123);
+}
+
+.addIngredientBtn {
+  padding: 4px 10px;
+  margin-left: 118px;
+  outline: none;
+  width: auto;
+  border: none;
+}
+
+.imageBtn:hover,
+.addIngredientBtn:hover {
+  background: linear-gradient(#fc583c, #e4392a);
+}
+
+.uploadButton {
+  margin: 30px 0;
+  background: linear-gradient(#3c79fc, #2a5ce4);
+  color: white;
+  width: 200px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+}
+
+.uploadButton:hover {
+  background: linear-gradient(#6896f8, #3b6cf3);
+}
+
+.closeIcon {
+  font-size: 25px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.closeIcon:hover {
+  transform: scale(1.2);
+}

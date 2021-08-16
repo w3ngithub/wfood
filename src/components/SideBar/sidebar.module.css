@@ -2,6 +2,19 @@
   width: 30%;
   height: 89vh;
   overflow-y: auto;
+  transition: width 0.2s ease-in;
+}
+
+.noSidebarContainer {
+  width: 0%;
+  transition: width 0.2s ease-in;
+  height: 89vh;
+  overflow: hidden;
+}
+
+.noSidebarContainer .recipeWrapper {
+  opacity: 0;
+  transition: all 0.1s ease-in;
 }
 
 .sidebarWrapper {
@@ -17,6 +30,7 @@
   gap: 20px;
   cursor: pointer;
   padding: 10px 15px;
+  opacity: 1;
   transition: all 0.3s ease-in;
 }
 
@@ -63,4 +77,34 @@
   border-radius: 50px;
   width: 80%;
   box-shadow: 0 5px 10px rgba(163, 163, 163, 0.4);
+}
+
+/* Show And Hide Sidebar */
+
+.sideBarHideBtn,
+.sideBarShowBtn {
+  /* width: 40px; */
+  background-color: rgb(118, 147, 226);
+  padding: 3px 8px;
+  position: absolute;
+  left: 30%;
+  cursor: pointer;
+  border-radius: 0px 20px 20px 0;
+  top: 70px;
+  color: white;
+  z-index: 3;
+  transition: left 0.2s ease-in;
+}
+
+.sideBarShowBtn {
+  left: 0%;
+}
+
+.sideBarShowHideBtn:hover {
+  background-color: rgb(68, 117, 180);
+}
+
+.arrowIcon {
+  font-size: 20px;
+  margin: 0px;
 }

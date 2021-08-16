@@ -21,6 +21,7 @@ const MainView = () => {
   const [favourite, setFavourite] = useState([]);
   const [increaseOne, setIncreaseOne] = useState(0);
 
+
   function addNumber() {
     setCount((prevState) => prevState + 1);
     setIncreaseOne(increaseOne + 0.5);
@@ -118,7 +119,10 @@ const MainView = () => {
                 </div>
               </div>
               <div className={classes.favourites}>
-                {favourite.indexOf(singleRecipe.recipe_id) != -1 ? (
+                {favourite.indexOf(singleRecipe.recipe_id) != -1 ||
+                JSON.parse(localStorage.getItem("ids")).indexOf(
+                  singleRecipe.recipe_id
+                ) !== -1 ? (
                   <p className={classes.removeOnHover}>
                     Remove from Favourites
                   </p>

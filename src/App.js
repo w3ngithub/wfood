@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 
 function App() {
   const [selectedRecipe, setSelectedRecipe] = useState({});
+  const [haveSearched, setHaveSearched] = useState(false);
 
   useEffect(() => {
     const localStorageID = JSON.parse(localStorage.getItem("ids"));
@@ -16,9 +17,9 @@ function App() {
 
   return (
     <div>
-      <Nav {...{ selectedRecipe, setSelectedRecipe }} />
+      <Nav {...{ selectedRecipe, setSelectedRecipe, setHaveSearched }} />
       <div className="App">
-        <Sidebar {...{ selectedRecipe, setSelectedRecipe }} />
+        <Sidebar {...{ selectedRecipe, setSelectedRecipe, haveSearched }} />
         <MainView />
       </div>
     </div>
