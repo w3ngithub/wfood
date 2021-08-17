@@ -6,10 +6,11 @@ import {
   REMOVE_FROM_FAVOURITE,
 } from "./actionTypes";
 
-export const searchedData = (data) => {
+export const searchedData = (data, fromFirebase) => {
   return {
     type: SEARCHED_DATA,
     data: data,
+    fromFirebase: fromFirebase,
   };
 };
 

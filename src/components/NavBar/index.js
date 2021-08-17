@@ -1,9 +1,10 @@
 import SearchBar from "../SearchBar";
 import { FiEdit } from "react-icons/fi";
+import React, { useState } from "react";
 import classes from "./navbar.module.css";
 import AddRecipeModal from "../AddRecipeModal";
 import { IoCloseCircle } from "react-icons/io5";
-import React, { useEffect, useState } from "react";
+import useFirestore from "../../hook/useFirestore";
 import { getData } from "../../redux/actions/action";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFavourite } from "../../redux/actions/action";
@@ -13,18 +14,26 @@ const Nav = ({ setSelectedRecipe, setHaveSearched }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
+  const { docs } = useFirestore("Recipes");
+
+  console.log(docs);
+
   let favouriteList = useSelector((state) => state.favouriteReducer.favourites);
 
   // useEffect(() => {
   //   console.log(JSON.parse(localStorage.getItem("ids")));
   // }, [favouriteList]);
 
-  async function getSingleRecipe(id) {
-    const response = await fetch(
-      `https://forkify-api.herokuapp.com/api/get?rId=${id}`
-    );
-    const data = await response.json();
-    dispatch(getData(data.recipe));
+  async function getSingleRecipe(favRecipe, id) {
+    if (!favRecipe.checkMark) {
+      const response = await fetch(
+        `https://forkify-api.herokuapp.com/api/get?rId=${id}`
+      );
+      const data = await response.json();
+      dispatch(getData(data.recipe));
+    } else {
+      dispatch(getData(favRecipe));
+    }
   }
 
   function removeFromFavourite(id) {
@@ -50,7 +59,7 @@ const Nav = ({ setSelectedRecipe, setHaveSearched }) => {
       <div className={classes.navContainer}>
         <div className={classes.firstPart}>
           <h3>Logo</h3>
-          <SearchBar {...{ setHaveSearched }} />
+          <SearchBar {...{ setHaveSearched, docs }} />
         </div>
         <div className={classes.addPart}>
           <p onClick={() => setShowModal(true)}>
@@ -70,7 +79,7 @@ const Nav = ({ setSelectedRecipe, setHaveSearched }) => {
                   key={fav.recipe_id}
                   className={classes.recipeWrapper}
                   onClick={() => {
-                    getSingleRecipe(fav.recipe_id);
+                    getSingleRecipe(fav, fav.recipe_id);
                     setSelectedRecipe({});
                   }}
                 >

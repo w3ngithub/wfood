@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import classes from "./searchbar.module.css";
 import { searchedData } from "../../redux/actions/action";
 
-const Search = ({ setHaveSearched }) => {
+const Search = ({ setHaveSearched, docs }) => {
   const [searchedValue, setSearchedValue] = useState("");
 
   const dispatch = useDispatch();
@@ -16,7 +16,12 @@ const Search = ({ setHaveSearched }) => {
         `https://forkify-api.herokuapp.com/api/search?q=${value}`
       );
       const data = await response.json();
-      dispatch(searchedData(data.recipes));
+
+      let recipeFromFirebase = docs.filter(
+        (doc) => doc.title === searchedValue
+      );
+
+      dispatch(searchedData(data.recipes, recipeFromFirebase));
       setHaveSearched(true);
     }
   }

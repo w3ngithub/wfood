@@ -21,6 +21,7 @@ const MainView = () => {
   const [favourite, setFavourite] = useState([]);
   const [increaseOne, setIncreaseOne] = useState(0);
 
+  // console.log("favvvv", favourite);
 
   function addNumber() {
     setCount((prevState) => prevState + 1);
@@ -34,29 +35,48 @@ const MainView = () => {
     }
   }
 
-  async function addToFavourite(id) {
+  async function addToFavourite(singleRecipe, id) {
     setFavourite([...favourite, id]);
-    let response = await fetch(
-      `https://forkify-api.herokuapp.com/api/get?rId=${id}`
-    );
-    let data = await response.json();
-
-    const localStorageData = JSON.parse(localStorage.getItem("list"));
-    const localStorageID = JSON.parse(localStorage.getItem("ids"));
-
-    if (localStorageData) {
-      localStorage.setItem(
-        "list",
-        JSON.stringify([...localStorageData, data.recipe])
+    if (!singleRecipe.checkMark) {
+      let response = await fetch(
+        `https://forkify-api.herokuapp.com/api/get?rId=${id}`
       );
+      let data = await response.json();
 
-      localStorage.setItem("ids", JSON.stringify([...localStorageID, id]));
+      const localStorageData = JSON.parse(localStorage.getItem("list"));
+      const localStorageID = JSON.parse(localStorage.getItem("ids"));
+
+      if (localStorageData) {
+        localStorage.setItem(
+          "list",
+          JSON.stringify([...localStorageData, data.recipe])
+        );
+
+        localStorage.setItem("ids", JSON.stringify([...localStorageID, id]));
+      } else {
+        localStorage.setItem("list", JSON.stringify([data.recipe]));
+        localStorage.setItem("ids", JSON.stringify([id]));
+      }
+
+      dispatch(addFavourite(data.recipe));
     } else {
-      localStorage.setItem("list", JSON.stringify([data.recipe]));
-      localStorage.setItem("ids", JSON.stringify([id]));
-    }
+      let data = singleRecipe;
+      const localStorageData = JSON.parse(localStorage.getItem("list"));
+      const localStorageID = JSON.parse(localStorage.getItem("ids"));
 
-    dispatch(addFavourite(data.recipe));
+      if (localStorageData) {
+        localStorage.setItem(
+          "list",
+          JSON.stringify([...localStorageData, data])
+        );
+
+        localStorage.setItem("ids", JSON.stringify([...localStorageID, id]));
+      } else {
+        localStorage.setItem("list", JSON.stringify([data]));
+        localStorage.setItem("ids", JSON.stringify([id]));
+      }
+      dispatch(addFavourite(data));
+    }
   }
 
   function removeFromFavourite(id) {
@@ -141,7 +161,9 @@ const MainView = () => {
                 ) : (
                   <AiOutlineHeart
                     className={classes.heartIcon}
-                    onClick={() => addToFavourite(singleRecipe.recipe_id)}
+                    onClick={() =>
+                      addToFavourite(singleRecipe, singleRecipe.recipe_id)
+                    }
                   />
                 )}
               </div>

@@ -2,6 +2,7 @@ import { SEARCHED_DATA, FILTERED_DATA } from "../actions/actionTypes";
 
 const initialState = {
   recipes: [],
+  recipesFromFirebase: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +11,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: action.data,
+        recipesFromFirebase: action.fromFirebase,
       };
 
     default:

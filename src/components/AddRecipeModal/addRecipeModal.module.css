@@ -45,6 +45,12 @@
   align-items: center;
 }
 
+.secondForm .form {
+  /* background-color: black; */
+  height: 230px;
+  overflow-y: auto;
+}
+
 .row input {
   width: 250px;
   padding: 6px 8px;
@@ -81,6 +87,7 @@
 .addIngredientBtn {
   padding: 4px 10px;
   margin-left: 118px;
+  margin-top: 15px;
   outline: none;
   width: auto;
   border: none;
@@ -120,4 +127,15 @@
 
 .closeIcon:hover {
   transform: scale(1.2);
+}
+
+.error,
+.foodName {
+  color: red;
+  margin-left: 138px;
+  font-size: 14px;
+}
+
+.foodName {
+  color: #9c6856;
 }

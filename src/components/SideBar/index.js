@@ -10,21 +10,32 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
   const [sidebarDisplay, setSidebarDisplay] = useState(true);
 
   let r = useSelector((state) => state.searchReducer.recipes);
+  let rFromFirebase = useSelector(
+    (state) => state.searchReducer.recipesFromFirebase
+  );
 
   // const [recipes, setRecipes] = useState(
   //   useSelector((state) => state.searchReducer.recipes)
   // );
 
   useEffect(() => {
-    setRecipes(r);
-  }, [r]);
+    r ? setRecipes(r.concat(rFromFirebase)) : setRecipes(rFromFirebase);
+    // setRecipes(r);
+    // setRecipesFromFirebase(rFromFirebase);
+  }, [r, rFromFirebase]);
 
-  async function getSingleRecipe(id) {
-    const response = await fetch(
-      `https://forkify-api.herokuapp.com/api/get?rId=${id}`
-    );
-    const data = await response.json();
-    dispatch(getData(data.recipe));
+  console.log("r", recipes);
+
+  async function getSingleRecipe(recipe, id) {
+    if (!recipe.checkMark) {
+      const response = await fetch(
+        `https://forkify-api.herokuapp.com/api/get?rId=${id}`
+      );
+      const data = await response.json();
+      dispatch(getData(data.recipe));
+    } else {
+      dispatch(getData(recipe));
+    }
   }
 
   function focusBackgroundColor(id) {
@@ -67,8 +78,9 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
         }
       >
         <div className={classes.sidebarWrapper}>
-          {recipes !== undefined && r !== undefined ? (
-            recipes.length !== 0 || r.length !== 0 ? (
+          {(recipes !== undefined && r !== undefined) ||
+          (recipes !== undefined && rFromFirebase !== undefined) ? (
+            recipes?.length !== 0 || r?.length !== 0 ? (
               <div className={classes.search}>
                 <input
                   type="text"
@@ -93,7 +105,7 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
                         : classes.recipeWrapper
                     }
                     onClick={() => {
-                      getSingleRecipe(recipe.recipe_id);
+                      getSingleRecipe(recipe, recipe.recipe_id);
                       focusBackgroundColor(recipe.recipe_id);
                     }}
                   >
