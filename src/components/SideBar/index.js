@@ -18,6 +18,8 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
     r ? setRecipes(r.concat(rFromFirebase)) : setRecipes(rFromFirebase);
   }, [r, rFromFirebase]);
 
+  console.log(r, recipes, rFromFirebase);
+
   async function getSingleRecipe(recipe, id) {
     if (!recipe.checkMark) {
       const response = await fetch(
@@ -76,8 +78,8 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
         }
       >
         <div className={classes.sidebarWrapper}>
-          {(recipes?.length !== 0 && r !== undefined) ||
-          (recipes.length !== 0 && rFromFirebase.length !== 0) ? (
+          {(recipes?.length !== undefined && r !== undefined) ||
+          (recipes.length !== undefined && rFromFirebase.length !== 0) ? (
             recipes?.length !== 0 || r?.length !== 0 ? (
               <div className={classes.search}>
                 <input
