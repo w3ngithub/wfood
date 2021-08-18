@@ -11,7 +11,8 @@ const Ingredients = ({ singleRecipe, increaseOne }) => {
           {singleRecipe.ingredients.map((recipe) => {
             let newStringWithoutParenthesis = recipe
               .replace(/\s*\(.*?\)\s*/g, "")
-              .replace(/\s*\[.*?\]\s*/g, "");
+              .replace(/\s*\[.*?\]\s*/g, "")
+              .replace(/,/g, " ");
 
             let number1 = +newStringWithoutParenthesis.replace(
               /[^0-9\/]/g,

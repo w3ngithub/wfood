@@ -16,8 +16,6 @@ const Nav = ({ setSelectedRecipe, setHaveSearched }) => {
 
   const { docs } = useFirestore("Recipes");
 
-  console.log(docs);
-
   let favouriteList = useSelector((state) => state.favouriteReducer.favourites);
 
   // useEffect(() => {

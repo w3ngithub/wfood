@@ -14,17 +14,9 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
     (state) => state.searchReducer.recipesFromFirebase
   );
 
-  // const [recipes, setRecipes] = useState(
-  //   useSelector((state) => state.searchReducer.recipes)
-  // );
-
   useEffect(() => {
     r ? setRecipes(r.concat(rFromFirebase)) : setRecipes(rFromFirebase);
-    // setRecipes(r);
-    // setRecipesFromFirebase(rFromFirebase);
   }, [r, rFromFirebase]);
-
-  console.log("r", recipes);
 
   async function getSingleRecipe(recipe, id) {
     if (!recipe.checkMark) {
@@ -45,11 +37,17 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
   }
 
   const filterSearch = (e) => {
-    let filteredRecipes = r.filter((recipe) =>
+    let filteredRecipes = r?.filter((recipe) =>
       recipe.title.toLowerCase().includes(e.target.value.toLowerCase())
     );
 
-    setRecipes(filteredRecipes);
+    let filteredRecipesFromFirebase = rFromFirebase?.filter((recipe) =>
+      recipe.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+
+    r
+      ? setRecipes(filteredRecipes.concat(filteredRecipesFromFirebase))
+      : setRecipes(filteredRecipesFromFirebase);
   };
 
   return (
@@ -78,8 +76,8 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
         }
       >
         <div className={classes.sidebarWrapper}>
-          {(recipes !== undefined && r !== undefined) ||
-          (recipes !== undefined && rFromFirebase !== undefined) ? (
+          {(recipes?.length !== 0 && r !== undefined) ||
+          (recipes.length !== 0 && rFromFirebase.length !== 0) ? (
             recipes?.length !== 0 || r?.length !== 0 ? (
               <div className={classes.search}>
                 <input

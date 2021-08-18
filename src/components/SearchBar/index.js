@@ -18,7 +18,7 @@ const Search = ({ setHaveSearched, docs }) => {
       const data = await response.json();
 
       let recipeFromFirebase = docs.filter(
-        (doc) => doc.title === searchedValue
+        (doc) => doc.title.toLowerCase() === searchedValue.toLowerCase()
       );
 
       dispatch(searchedData(data.recipes, recipeFromFirebase));

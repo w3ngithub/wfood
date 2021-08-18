@@ -43,15 +43,22 @@
   grid-template-columns: 1fr 2.8fr;
   gap: 1.2rem;
   align-items: center;
+  position: relative;
 }
 
 .secondForm .form {
-  /* background-color: black; */
   height: 230px;
   overflow-y: auto;
 }
 
-.row input {
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input,
+.redInput {
   width: 250px;
   padding: 6px 8px;
   border: 1px solid #ddd;
@@ -59,12 +66,16 @@
   outline: none;
 }
 
-.row input::placeholder {
+.row .input::placeholder {
   font-size: 12px;
 }
 
-.row input:focus {
+.row .input:focus {
   border: 1px solid #000;
+}
+
+.redInput {
+  border: 1px solid red;
 }
 
 .imageInput {
@@ -98,7 +109,8 @@
   background: linear-gradient(#fc583c, #e4392a);
 }
 
-.uploadButton {
+.uploadButton,
+.uploadingButton {
   margin: 30px 0;
   background: linear-gradient(#3c79fc, #2a5ce4);
   color: white;
@@ -111,6 +123,11 @@
   justify-content: center;
   gap: 5px;
   align-items: center;
+}
+
+.uploadingButton {
+  background: linear-gradient(#8a8c8f, #444958);
+  cursor: wait;
 }
 
 .uploadButton:hover {
@@ -134,6 +151,14 @@
   color: red;
   margin-left: 138px;
   font-size: 14px;
+}
+
+.inputError {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+  position: absolute;
+  top: 80%;
 }
 
 .foodName {
