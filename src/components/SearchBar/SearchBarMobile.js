@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { FaSearch } from "react-icons/fa";
-import classes from "./searchbar.module.css";
 import { IoClose } from "react-icons/io5";
+import classes from "./searchbarMobile.module.css";
 import { searchedData } from "../../redux/actions/action";
 
-const Search = ({ setHaveSearched, docs }) => {
+const SearchBarMobile = ({
+  setHaveSearched,
+  docs,
+  showInput,
+  setShowInput,
+  setShowFav,
+}) => {
   const [searchedValue, setSearchedValue] = useState("");
 
   const dispatch = useDispatch();
+  const inputRef = useRef(null);
 
   async function fetchData(value, e) {
     e.preventDefault();
@@ -37,9 +44,10 @@ const Search = ({ setHaveSearched, docs }) => {
       <input
         type="text"
         placeholder="Search recipes..."
-        className={classes.input}
+        className={showInput ? classes.input : classes.hideInput}
         onChange={(e) => setSearchedValue(e.target.value)}
         value={searchedValue}
+        ref={inputRef}
       />
       {searchedValue ? (
         <IoClose
@@ -48,13 +56,15 @@ const Search = ({ setHaveSearched, docs }) => {
         />
       ) : null}
       <FaSearch
-        className={classes.searchIcon}
-        onClick={(e) => {
-          fetchData(searchedValue, e);
+        className={showInput ? classes.searchIcon : classes.whiteSearchIcon}
+        onClick={() => {
+          setShowInput(true);
+          inputRef.current.focus();
+          setShowFav(false);
         }}
       />
     </form>
   );
 };
 
-export default Search;
+export default SearchBarMobile;

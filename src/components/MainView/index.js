@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { BsPeople } from "react-icons/bs";
 import classes from "./mainView.module.css";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   AiOutlineClockCircle,
@@ -12,16 +12,21 @@ import {
 import { addFavourite, removeFavourite } from "../../redux/actions/action";
 import Ingredients from "./Ingredients";
 
-const MainView = () => {
+const MainView = ({ setFavourite, favourite }) => {
   const dispatch = useDispatch();
 
   let singleRecipe = useSelector((state) => state.getReducer.singleRecipe);
 
   const [count, setCount] = useState(2);
-  const [favourite, setFavourite] = useState([]);
+  // const [favourite, setFavourite] = useState([]);
   const [increaseOne, setIncreaseOne] = useState(0);
+  const [fromLocalStorage, setFromLocalStorage] = useState([]);
 
-  // console.log("favvvv", favourite);
+  useEffect(() => {
+    setFromLocalStorage(JSON.parse(localStorage.getItem("ids")));
+  }, [localStorage.getItem("ids")]);
+
+  console.log("favvvv", favourite);
 
   function addNumber() {
     setCount((prevState) => prevState + 1);
@@ -151,9 +156,7 @@ const MainView = () => {
                 )}
 
                 {favourite.indexOf(singleRecipe.recipe_id) != -1 ||
-                JSON.parse(localStorage.getItem("ids")).indexOf(
-                  singleRecipe.recipe_id
-                ) !== -1 ? (
+                fromLocalStorage.indexOf(singleRecipe.recipe_id) !== -1 ? (
                   <AiFillHeart
                     className={classes.heartIcon}
                     onClick={() => removeFromFavourite(singleRecipe.recipe_id)}

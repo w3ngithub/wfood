@@ -234,7 +234,9 @@ const AddRecipeModal = ({ setShowModal }) => {
                           onIngredientChange(e, `${ingredient}${i}`);
                           ing1.onChange(e);
                         }}
-                        className={classes.input}
+                        className={
+                          errors.ingredient1 ? classes.redInput : classes.input
+                        }
                       />
                     ) : i == 1 ? (
                       <input
@@ -246,7 +248,9 @@ const AddRecipeModal = ({ setShowModal }) => {
                           onIngredientChange(e, `${ingredient}${i}`);
                           ing2.onChange(e);
                         }}
-                        className={classes.input}
+                        className={
+                          errors.ingredient2 ? classes.redInput : classes.input
+                        }
                       />
                     ) : (
                       <input

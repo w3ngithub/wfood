@@ -164,3 +164,60 @@
 .foodName {
   color: #9c6856;
 }
+
+/* QUERY */
+
+@media screen and (max-width: 1423px) and (min-width: 1281px) {
+  .modalWrapper {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 1601px) and (min-width: 1424px) {
+  .modalWrapper {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1708px) and (min-width: 1601px) {
+  .modalWrapper {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1921px) and (min-width: 1708px) {
+  .modalWrapper {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  .modalWrapper {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .modalWrapper {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modalWrapper {
+    width: 80%;
+  }
+
+  .input,
+  .redInput {
+    width: 140px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+  }
+
+  .row label {
+    width: 100px;
+  }
+}

@@ -108,3 +108,20 @@
   font-size: 20px;
   margin: 0px;
 }
+
+@media only screen and (max-width: 768px) {
+  .sidebarContainer {
+    width: 35%;
+    height: 94vh;
+  }
+
+  .sideBarHideBtn,
+  .sideBarShowBtn {
+    left: 35%;
+    top: 80px;
+  }
+
+  .sideBarShowBtn {
+    left: 0%;
+  }
+}
