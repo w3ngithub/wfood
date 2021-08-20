@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 10px;
+    padding: 5px 12px;
     background: linear-gradient(#f85032, #e4392a);
     color: white;
     position: relative;
@@ -21,7 +21,7 @@
   .secondPart {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
   }
 
   .navIcon {
@@ -79,5 +79,10 @@
     font-size: 16px;
     position: absolute;
     right: 5px;
+  }
+
+  .navIcon {
+    margin-top: 5px;
+    font-size: 20px;
   }
 }

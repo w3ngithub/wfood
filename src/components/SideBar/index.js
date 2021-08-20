@@ -54,7 +54,7 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
 
   return (
     <>
-      {haveSearched &&
+      {/* {haveSearched &&
         (sidebarDisplay ? (
           <div
             className={classes.sideBarHideBtn}
@@ -69,7 +69,7 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
           >
             <FiArrowRight className={classes.arrowIcon} />
           </div>
-        ))}
+        ))} */}
       <div
         className={
           haveSearched && sidebarDisplay
@@ -77,6 +77,22 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
             : classes.noSidebarContainer
         }
       >
+        {haveSearched &&
+          (sidebarDisplay ? (
+            <div
+              className={classes.sideBarHideBtn}
+              onClick={() => setSidebarDisplay(!sidebarDisplay)}
+            >
+              <FiArrowLeft className={classes.arrowIcon} />
+            </div>
+          ) : (
+            <div
+              className={classes.sideBarShowBtn}
+              onClick={() => setSidebarDisplay(!sidebarDisplay)}
+            >
+              <FiArrowRight className={classes.arrowIcon} />
+            </div>
+          ))}
         <div className={classes.sidebarWrapper}>
           {(recipes?.length !== undefined && r !== undefined) ||
           (recipes.length !== undefined && rFromFirebase.length !== 0) ? (
@@ -96,26 +112,55 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
           {recipes ? (
             recipes.length !== 0 ? (
               <>
-                {recipes.map((recipe) => (
-                  <div
-                    key={recipe.recipe_id}
-                    className={
-                      selectedRecipe[recipe.recipe_id]
-                        ? classes.recipeWrapperWithBakcgroundColor
-                        : classes.recipeWrapper
-                    }
-                    onClick={() => {
-                      getSingleRecipe(recipe, recipe.recipe_id);
-                      focusBackgroundColor(recipe.recipe_id);
-                    }}
-                  >
-                    <img src={recipe.image_url} alt="Food Image" />
-                    <div>
-                      <span style={{ color: "#c73326" }}>{recipe.title}</span>
-                      <span style={{ color: "grey" }}>{recipe.publisher}</span>
+                <div className={classes.desktopView}>
+                  {recipes.map((recipe) => (
+                    <div
+                      key={recipe.recipe_id}
+                      className={
+                        selectedRecipe[recipe.recipe_id]
+                          ? classes.recipeWrapperWithBakcgroundColor
+                          : classes.recipeWrapper
+                      }
+                      onClick={() => {
+                        getSingleRecipe(recipe, recipe.recipe_id);
+                        focusBackgroundColor(recipe.recipe_id);
+                      }}
+                    >
+                      <img src={recipe.image_url} alt="Food Image" />
+                      <div>
+                        <span style={{ color: "#c73326" }}>{recipe.title}</span>
+                        <span style={{ color: "grey" }}>
+                          {recipe.publisher}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <div className={classes.mobileView}>
+                  {recipes.map((recipe) => (
+                    <div
+                      key={recipe.recipe_id}
+                      className={
+                        selectedRecipe[recipe.recipe_id]
+                          ? classes.recipeWrapperWithBakcgroundColor
+                          : classes.recipeWrapper
+                      }
+                      onClick={() => {
+                        getSingleRecipe(recipe, recipe.recipe_id);
+                        focusBackgroundColor(recipe.recipe_id);
+                        setSidebarDisplay(false);
+                      }}
+                    >
+                      <img src={recipe.image_url} alt="Food Image" />
+                      <div>
+                        <span style={{ color: "#c73326" }}>{recipe.title}</span>
+                        <span style={{ color: "grey" }}>
+                          {recipe.publisher}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </>
             ) : null
           ) : null}

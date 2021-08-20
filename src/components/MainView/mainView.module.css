@@ -143,3 +143,47 @@
     width: 80%;
   }
 }
+
+@media only screen and (max-width: 414px) {
+  .image {
+    height: 300px;
+  }
+
+  .name {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  /* //MiddlePart */
+
+  .middlePart {
+    display: flex;
+    width: 90%;
+    padding: 35px 20px;
+  }
+
+  .middlePart > div {
+    gap: 20px;
+  }
+
+  .time,
+  .servings {
+    gap: 5px;
+    font-size: 14px;
+  }
+
+  .icon,
+  .iconSign {
+    color: rgb(199, 51, 38);
+    font-size: 16px;
+  }
+
+  .heartIcon {
+    font-size: 24px;
+  }
+
+  .empty {
+    font-size: 16px;
+    margin-top: 50%;
+  }
+}
