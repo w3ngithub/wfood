@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FaSearch } from "react-icons/fa";
-import classes from "./searchbar.module.css";
 import { IoClose } from "react-icons/io5";
-import { searchedData } from "../../redux/actions/action";
+import classes from "./searchbar.module.css";
+import { searchedData, showSidebar } from "../../redux/actions/action";
 
 const Search = ({ setHaveSearched, docs }) => {
   const [searchedValue, setSearchedValue] = useState("");
@@ -23,6 +23,7 @@ const Search = ({ setHaveSearched, docs }) => {
       );
 
       dispatch(searchedData(data.recipes, recipeFromFirebase));
+      dispatch(showSidebar());
       setHaveSearched(true);
     }
   }

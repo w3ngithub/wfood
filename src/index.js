@@ -7,12 +7,14 @@ import { Provider } from "react-redux";
 import { combineReducers } from "redux";
 import getReducer from "./redux/reducer/getReducer";
 import searchReducer from "./redux/reducer/searchReducer";
+import sidebarReducer from "./redux/reducer/sidebarReducer";
 import favouriteReducer from "./redux/reducer/favouriteReducer";
 
 const reducers = combineReducers({
   searchReducer,
   getReducer,
   favouriteReducer,
+  sidebarReducer,
 });
 
 const store = createStore(

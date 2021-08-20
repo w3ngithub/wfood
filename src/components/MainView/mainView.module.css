@@ -1,14 +1,13 @@
 .mainViewContainer {
-  margin-top: -62px;
-  background-color: #f9f5f3;
   flex: 1;
   height: 100vh;
   overflow-y: auto;
+  margin-top: -62px;
+  background-color: #f9f5f3;
 }
 
 .mainViewWrapper {
   margin-top: 62px;
-  /* height: calc(100% - 62px); */
 }
 
 .image {
@@ -28,26 +27,26 @@
 
 .image::after {
   content: "";
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
   opacity: 0.4;
+  position: absolute;
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
 }
 
 .name {
-  position: absolute;
-  z-index: 1;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  padding: 10px 10px;
-  background: linear-gradient(to right bottom, #fad26c, #f54e42);
-  text-transform: uppercase;
   right: 0;
   bottom: 0;
+  z-index: 1;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 10px;
+  position: absolute;
+  text-transform: uppercase;
+  background: linear-gradient(to right bottom, #fad26c, #f54e42);
 }
 
 .name p {
@@ -57,40 +56,40 @@
 /* //MiddlePart */
 
 .middlePart {
-  padding: 40px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 70%;
+  display: flex;
   margin: 0 auto;
+  padding: 40px 20px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .middlePart > div {
-  display: flex;
   gap: 30px;
+  display: flex;
 }
 
 .time,
 .servings {
-  display: flex;
-  align-items: center;
   gap: 8px;
+  display: flex;
   color: #615551;
+  align-items: center;
 }
 
 .icon,
 .iconSign,
 .heartIcon {
-  color: rgb(199, 51, 38);
   font-size: 18px;
+  color: rgb(199, 51, 38);
 }
 
 .iconSign {
   font-size: 18px;
-  cursor: pointer;
-  user-select: none;
-  margin-left: 8px;
   margin-top: 5px;
+  cursor: pointer;
+  margin-left: 8px;
+  user-select: none;
 }
 
 .iconSign:hover {
@@ -105,23 +104,23 @@
 .favourites .showOnHover,
 .favourites .removeOnHover {
   display: none;
-  position: absolute;
   top: -50px;
   left: -65px;
   width: 130px;
   padding: 5px 10px;
   border-radius: 5px;
+  position: absolute;
   background-color: rgb(255, 248, 248);
 }
 
 .favourites .removeOnHover {
-  width: 175px;
   left: -85px;
+  width: 175px;
 }
 
 .heartIcon {
-  font-size: 30px;
   cursor: pointer;
+  font-size: 30px;
 }
 
 .favourites:hover .showOnHover,
@@ -131,10 +130,10 @@
 
 .empty {
   width: 100%;
-  text-align: center;
   font-size: 18px;
   margin-top: 20%;
   font-weight: bold;
+  text-align: center;
   color: rgb(199, 51, 38);
 }
 
@@ -145,6 +144,18 @@
 }
 
 @media only screen and (max-width: 414px) {
+  .mainViewContainer {
+    flex: 1;
+    height: 100vh;
+    overflow-y: auto;
+    margin-top: -51px;
+    background-color: #f9f5f3;
+  }
+
+  .mainViewWrapper {
+    margin-top: 51px;
+  }
+
   .image {
     height: 300px;
   }
@@ -157,8 +168,8 @@
   /* //MiddlePart */
 
   .middlePart {
+    width: 88%;
     display: flex;
-    width: 90%;
     padding: 35px 20px;
   }
 
@@ -174,12 +185,23 @@
 
   .icon,
   .iconSign {
-    color: rgb(199, 51, 38);
     font-size: 16px;
+    color: rgb(199, 51, 38);
   }
 
   .heartIcon {
     font-size: 24px;
+  }
+
+  .favourites .showOnHover,
+  .favourites .removeOnHover {
+    opacity: 0;
+    display: none;
+  }
+
+  .favourites:hover .showOnHover,
+  .favourites:hover .removeOnHover {
+    display: none;
   }
 
   .empty {

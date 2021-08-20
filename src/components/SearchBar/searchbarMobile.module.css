@@ -1,18 +1,18 @@
 .searchContainer {
-  display: flex;
-  align-items: center;
   gap: 7px;
+  display: flex;
   position: relative;
+  align-items: center;
 }
 
 .input {
+  opacity: 1;
+  width: 200px;
   border: none;
   outline: none;
   padding: 8px 25px;
   padding-right: 10%;
   border-radius: 50px;
-  width: 200px;
-  opacity: 1;
   transition: all 0.3s ease-in;
 }
 
@@ -27,10 +27,10 @@
 
 .searchIcon,
 .whiteSearchIcon {
+  left: 2%;
   font-size: 16px;
   position: absolute;
   color: rgb(122, 122, 122);
-  left: 2%;
 }
 
 .whiteSearchIcon {
@@ -39,9 +39,9 @@
 }
 
 .closeIcon {
-  font-size: 16px;
-  color: rgb(49, 49, 49);
-  position: absolute;
   right: 3%;
+  font-size: 16px;
   cursor: pointer;
+  position: absolute;
+  color: rgb(49, 49, 49);
 }

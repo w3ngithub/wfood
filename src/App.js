@@ -20,15 +20,21 @@ function App() {
     <div>
       <Nav
         {...{
-          selectedRecipe,
-          setSelectedRecipe,
-          setHaveSearched,
-          setFavourite,
           favourite,
+          setFavourite,
+          selectedRecipe,
+          setHaveSearched,
+          setSelectedRecipe,
         }}
       />
       <div className="App">
-        <Sidebar {...{ selectedRecipe, setSelectedRecipe, haveSearched }} />
+        <Sidebar
+          {...{
+            haveSearched,
+            selectedRecipe,
+            setSelectedRecipe,
+          }}
+        />
         <MainView {...{ favourite, setFavourite }} />
       </div>
     </div>

@@ -1,3 +1,4 @@
+import Ingredients from "./Ingredients";
 import { BsPeople } from "react-icons/bs";
 import classes from "./mainView.module.css";
 import React, { useState, useEffect } from "react";
@@ -10,7 +11,8 @@ import {
   AiOutlineHeart,
 } from "react-icons/ai";
 import { addFavourite, removeFavourite } from "../../redux/actions/action";
-import Ingredients from "./Ingredients";
+
+import { ToastContainer, toast } from "react-toastify";
 
 const MainView = ({ setFavourite, favourite }) => {
   const dispatch = useDispatch();
@@ -18,15 +20,12 @@ const MainView = ({ setFavourite, favourite }) => {
   let singleRecipe = useSelector((state) => state.getReducer.singleRecipe);
 
   const [count, setCount] = useState(2);
-  // const [favourite, setFavourite] = useState([]);
   const [increaseOne, setIncreaseOne] = useState(0);
   const [fromLocalStorage, setFromLocalStorage] = useState([]);
 
   useEffect(() => {
     setFromLocalStorage(JSON.parse(localStorage.getItem("ids")));
   }, [localStorage.getItem("ids")]);
-
-  console.log("favvvv", favourite);
 
   function addNumber() {
     setCount((prevState) => prevState + 1);
@@ -176,6 +175,7 @@ const MainView = ({ setFavourite, favourite }) => {
               singleRecipe={singleRecipe}
               increaseOne={increaseOne}
             />
+            <ToastContainer />
           </>
         )}
       </div>

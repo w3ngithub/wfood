@@ -4,14 +4,14 @@
 
 @media only screen and (max-width: 414px) {
   .mobileNavContainer {
+    z-index: 6;
     display: flex;
+    color: white;
+    padding: 5px 12px;
+    position: relative;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 12px;
     background: linear-gradient(#f85032, #e4392a);
-    color: white;
-    position: relative;
-    z-index: 6;
   }
 
   .logo {
@@ -19,18 +19,13 @@
   }
 
   .secondPart {
+    gap: 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
   }
 
   .navIcon {
     font-size: 20px;
-  }
-
-  .favouriteList {
-    /* line-height: 42px; */
-    /* margin: 0; */
   }
 
   .favouriteList > div {
@@ -38,27 +33,27 @@
   }
 
   .notification {
-    /* height: 0; */
-    /* overflow: hidden; */
-    background-color: white;
-    position: absolute;
     top: 51px;
     right: 0px;
-    z-index: 3;
+    z-index: 4;
     width: 100%;
+    max-height: 400px;
+    overflow-y: scroll;
+    position: absolute;
+    background-color: white;
     box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
   }
 
   .recipeWrapper {
-    display: flex;
-    align-items: flex-start;
     gap: 15px;
+    display: flex;
+    font-size: 13px;
     cursor: pointer;
     padding: 8px 12px;
+    position: relative;
+    align-items: flex-start;
     transition: all 0.3s ease-in;
     border-bottom: 1px solid rgba(233, 193, 112, 0.4);
-    font-size: 13px;
-    position: relative;
   }
 
   .recipeWrapper > div {
@@ -74,15 +69,15 @@
   }
 
   .closeIcon {
+    right: 5px;
     z-index: 50;
     color: grey;
     font-size: 16px;
     position: absolute;
-    right: 5px;
   }
 
   .navIcon {
-    margin-top: 5px;
     font-size: 20px;
+    margin-top: 5px;
   }
 }

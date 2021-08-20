@@ -6,18 +6,6 @@ const reducer = (state, action) => {
         [action.payload.name]: action.payload.value,
       };
 
-    // case "ADD_INGREDIENTS":
-    //   return {
-    //     ...state,
-    //     ingredients: [
-    //       ...state.ingredients.map((ingredient) =>
-    //         ingredient.id === action.payload.id
-    //           ? { ...ingredient, [action.payload.name]: action.payload.value }
-    //           : ingredient
-    //       ),
-    //     ],
-    //   };
-
     case "ADD_INGREDIENTS":
       return {
         ...state,
@@ -29,18 +17,6 @@ const reducer = (state, action) => {
           ),
         ],
       };
-
-    // case "ADD_INGREDIENT_FIELD":
-    //   return {
-    //     ...state,
-    //     ingredients: [
-    //       ...state.ingredients,
-    //       {
-    //         id: state.ingredients[state.ingredients.length - 1].id + 1,
-    //         ingredient: "",
-    //       },
-    //     ],
-    //   };
 
     case "ADD_INGREDIENT_FIELD":
       return {

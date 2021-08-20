@@ -1,6 +1,6 @@
 import React from "react";
-import { AiFillCaretRight } from "react-icons/ai";
 import classes from "./ingredients.module.css";
+import { AiFillCaretRight } from "react-icons/ai";
 
 const Ingredients = ({ singleRecipe, increaseOne }) => {
   return (
@@ -55,5 +55,3 @@ const Ingredients = ({ singleRecipe, increaseOne }) => {
 };
 
 export default Ingredients;
-
-//Regex -- str.replace(/[^0-9\/]/g, '')

@@ -1,13 +1,16 @@
 import classes from "./sidebar.module.css";
 import React, { useState, useEffect } from "react";
-import { getData } from "../../redux/actions/action";
 import { useSelector, useDispatch } from "react-redux";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { getData, hideSidebar, showSidebar } from "../../redux/actions/action";
 
 const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
   const dispatch = useDispatch();
   const [recipes, setRecipes] = useState([]);
-  const [sidebarDisplay, setSidebarDisplay] = useState(true);
+
+  let sidebarDisplay = useSelector((state) => state.sidebarReducer.showSidebar);
+
+  console.log(sidebarDisplay);
 
   let r = useSelector((state) => state.searchReducer.recipes);
   let rFromFirebase = useSelector(
@@ -17,8 +20,6 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
   useEffect(() => {
     r ? setRecipes(r.concat(rFromFirebase)) : setRecipes(rFromFirebase);
   }, [r, rFromFirebase]);
-
-  console.log(r, recipes, rFromFirebase);
 
   async function getSingleRecipe(recipe, id) {
     if (!recipe.checkMark) {
@@ -54,22 +55,6 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
 
   return (
     <>
-      {/* {haveSearched &&
-        (sidebarDisplay ? (
-          <div
-            className={classes.sideBarHideBtn}
-            onClick={() => setSidebarDisplay(!sidebarDisplay)}
-          >
-            <FiArrowLeft className={classes.arrowIcon} />
-          </div>
-        ) : (
-          <div
-            className={classes.sideBarShowBtn}
-            onClick={() => setSidebarDisplay(!sidebarDisplay)}
-          >
-            <FiArrowRight className={classes.arrowIcon} />
-          </div>
-        ))} */}
       <div
         className={
           haveSearched && sidebarDisplay
@@ -77,22 +62,35 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
             : classes.noSidebarContainer
         }
       >
-        {haveSearched &&
-          (sidebarDisplay ? (
-            <div
-              className={classes.sideBarHideBtn}
-              onClick={() => setSidebarDisplay(!sidebarDisplay)}
-            >
-              <FiArrowLeft className={classes.arrowIcon} />
-            </div>
-          ) : (
-            <div
-              className={classes.sideBarShowBtn}
-              onClick={() => setSidebarDisplay(!sidebarDisplay)}
-            >
-              <FiArrowRight className={classes.arrowIcon} />
-            </div>
-          ))}
+        {haveSearched && (
+          <div className={classes.desktopArrow}>
+            {sidebarDisplay ? (
+              <div
+                className={classes.sideBarHideBtn}
+                onClick={() => dispatch(hideSidebar())}
+              >
+                <FiArrowLeft className={classes.arrowIcon} />
+              </div>
+            ) : (
+              <div
+                className={classes.sideBarShowBtn}
+                onClick={() => dispatch(showSidebar())}
+              >
+                <FiArrowRight className={classes.arrowIcon} />
+              </div>
+            )}
+          </div>
+        )}
+
+        {haveSearched && !sidebarDisplay && (
+          <div
+            className={classes.sideBarShowBtn}
+            onClick={() => dispatch(showSidebar())}
+          >
+            <FiArrowRight className={classes.arrowIcon} />
+          </div>
+        )}
+
         <div className={classes.sidebarWrapper}>
           {(recipes?.length !== undefined && r !== undefined) ||
           (recipes.length !== undefined && rFromFirebase.length !== 0) ? (
@@ -104,10 +102,29 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
                   className={classes.input}
                   onChange={(e) => filterSearch(e)}
                 />
+
+                {haveSearched && sidebarDisplay && (
+                  <div
+                    className={classes.sideBarHideBtn}
+                    onClick={() => dispatch(hideSidebar())}
+                  >
+                    <FiArrowLeft className={classes.arrowIcon} />
+                  </div>
+                )}
               </div>
             ) : null
           ) : (
-            <div className={classes.empty}>Recipe Not Found!</div>
+            <>
+              {sidebarDisplay && (
+                <div
+                  className={classes.sideBarHideBtnEmpty}
+                  onClick={() => dispatch(hideSidebar())}
+                >
+                  <FiArrowLeft className={classes.arrowIcon} />
+                </div>
+              )}
+              <div className={classes.empty}>Recipe Not Found!</div>
+            </>
           )}
           {recipes ? (
             recipes.length !== 0 ? (
@@ -148,7 +165,7 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
                       onClick={() => {
                         getSingleRecipe(recipe, recipe.recipe_id);
                         focusBackgroundColor(recipe.recipe_id);
-                        setSidebarDisplay(false);
+                        dispatch(hideSidebar());
                       }}
                     >
                       <img src={recipe.image_url} alt="Food Image" />

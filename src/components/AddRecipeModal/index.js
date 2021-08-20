@@ -1,11 +1,13 @@
 import reducer from "../reducer/index";
+import { useForm } from "react-hook-form";
 import { IoIosClose } from "react-icons/io";
 import classes from "./addRecipeModal.module.css";
 import React, { useState, useReducer } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { firestore, storage } from "../../firebase/config";
 
-import { useForm } from "react-hook-form";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddRecipeModal = ({ setShowModal }) => {
   const {
@@ -14,12 +16,20 @@ const AddRecipeModal = ({ setShowModal }) => {
     formState: { errors },
   } = useForm();
 
+  const success = () =>
+    toast.success("Upload Successful!", {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      onClose: () => setShowModal(false),
+    });
+
   const title = register("title", { required: true });
   const publisher = register("publisher", { required: true });
   const preparationTime = register("preparationTime", { required: true });
   const ing1 = register("ingredient1", { required: true });
   const ing2 = register("ingredient2", { required: true });
-  // const image = register("image", { required: true });
 
   const [foodImage, setFoodImage] = useState(null);
   const [imageError, setImageError] = useState(null);
@@ -107,9 +117,11 @@ const AddRecipeModal = ({ setShowModal }) => {
       };
 
       //FIRESTORE
-      firestore.collection("Recipes").doc(state?.title).set({ recipe });
-
-      setShowModal(false);
+      firestore
+        .collection("Recipes")
+        .doc(state?.title)
+        .set({ recipe })
+        .then(() => success());
     } else {
       setSelectImage("*choose an Image");
     }
@@ -297,6 +309,7 @@ const AddRecipeModal = ({ setShowModal }) => {
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

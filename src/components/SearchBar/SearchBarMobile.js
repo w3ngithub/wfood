@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { FaSearch } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import React, { useRef, useState } from "react";
 import classes from "./searchbarMobile.module.css";
-import { searchedData } from "../../redux/actions/action";
+import { searchedData, showSidebar } from "../../redux/actions/action";
 
 const SearchBarMobile = ({
   setHaveSearched,
@@ -31,6 +31,7 @@ const SearchBarMobile = ({
 
       dispatch(searchedData(data.recipes, recipeFromFirebase));
       setHaveSearched(true);
+      dispatch(showSidebar());
     }
   }
 
@@ -49,7 +50,7 @@ const SearchBarMobile = ({
         value={searchedValue}
         ref={inputRef}
       />
-      {searchedValue ? (
+      {searchedValue && showInput ? (
         <IoClose
           onClick={() => setSearchedValue("")}
           className={classes.closeIcon}

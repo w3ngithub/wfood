@@ -1,5 +1,5 @@
-import { IoMdAdd } from "react-icons/io";
 import React, { useState } from "react";
+import { IoMdAdd } from "react-icons/io";
 import classes from "./mobileNav.module.css";
 import AddRecipeModal from "../AddRecipeModal";
 import { IoCloseCircle } from "react-icons/io5";

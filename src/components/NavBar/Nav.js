@@ -4,13 +4,12 @@ import React, { useState } from "react";
 import classes from "./navbar.module.css";
 import AddRecipeModal from "../AddRecipeModal";
 import { IoCloseCircle } from "react-icons/io5";
+import Image from "../../assets/image/wflogo.png";
 import useFirestore from "../../hook/useFirestore";
 import { getData } from "../../redux/actions/action";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFavourite } from "../../redux/actions/action";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-
-import Image from "../../assets/image/wflogo.png";
 
 const Nav = ({
   setSelectedRecipe,

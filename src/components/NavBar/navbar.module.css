@@ -1,33 +1,33 @@
 .navContainer {
+  z-index: 6;
   display: flex;
+  color: white;
+  padding: 0px 40px;
+  position: relative;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 40px;
   background: linear-gradient(#f85032, #e4392a);
-  color: white;
-  position: relative;
-  z-index: 6;
 }
 
 .firstPart {
+  width: 58vw;
   display: flex;
   justify-content: space-between;
-  width: 58vw;
 }
 
 .addPart {
-  display: flex;
-  align-items: center;
   gap: 50px;
+  display: flex;
   padding: 0px 20px;
   position: relative;
+  align-items: center;
 }
 
 .addPart p {
-  display: flex;
-  align-items: center;
   gap: 5px;
+  display: flex;
   cursor: pointer;
+  align-items: center;
   transition: all 0.2s ease-in;
 }
 
@@ -43,21 +43,21 @@
 
 .notification {
   top: 62px;
+  height: 0;
   right: 0px;
   z-index: 3;
-  width: 350px;
   opacity: 0;
+  width: 350px;
+  overflow-y: auto;
+  max-height: 450px;
   position: absolute;
   background-color: white;
   transition: all 0.5s ease-in;
-  max-height: 450px;
-  overflow-y: auto;
-  height: 0;
 }
 
 .favouriteList {
-  line-height: 62px;
   margin: 0;
+  line-height: 62px;
 }
 
 .favouriteList > div {
@@ -70,11 +70,11 @@
 }
 
 .recipeWrapper {
-  display: flex;
-  align-items: flex-start;
   gap: 20px;
+  display: flex;
   cursor: pointer;
   padding: 10px 15px;
+  align-items: flex-start;
   transition: all 0.3s ease-in;
   border-bottom: 1px solid rgba(233, 193, 112, 0.4);
 }
@@ -96,11 +96,11 @@
 }
 
 .closeIcon {
+  right: 5px;
   z-index: 50;
   color: grey;
   font-size: 16px;
   position: absolute;
-  right: 5px;
 }
 
 .closeIcon:hover {
@@ -114,9 +114,9 @@
 
 @media only screen and (max-width: 768px) {
   .navContainer {
+    padding: 0px 10px;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 10px;
   }
 
   .image {
