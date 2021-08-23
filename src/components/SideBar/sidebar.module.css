@@ -116,6 +116,36 @@
   display: none;
 }
 
+@media screen and (max-width: 1423px) and (min-width: 1281px) {
+  .sidebarContainer {
+    height: 90vh;
+  }
+}
+
+@media screen and (max-width: 1601px) and (min-width: 1424px) {
+  .sidebarContainer {
+    height: 91vh;
+  }
+}
+
+@media screen and (max-width: 1708px) and (min-width: 1601px) {
+  .sidebarContainer {
+    height: 92vh;
+  }
+}
+
+@media screen and (max-width: 1921px) and (min-width: 1708px) {
+  .sidebarContainer {
+    height: 92.5vh;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  .sidebarContainer {
+    height: 94.5vh;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .sidebarContainer {
     width: 35%;
@@ -137,6 +167,7 @@
   .sidebarContainer {
     z-index: 5;
     width: 100%;
+    min-height: 100%;
     height: 91.4vh;
     overflow-y: auto;
     position: absolute;

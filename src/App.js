@@ -8,6 +8,8 @@ function App() {
   const [selectedRecipe, setSelectedRecipe] = useState({});
   const [haveSearched, setHaveSearched] = useState(false);
   const [favourite, setFavourite] = useState([]);
+  const [showFav, setShowFav] = useState(false);
+  const [showInput, setShowInput] = useState(false);
 
   useEffect(() => {
     const localStorageID = JSON.parse(localStorage.getItem("ids"));
@@ -25,6 +27,10 @@ function App() {
           selectedRecipe,
           setHaveSearched,
           setSelectedRecipe,
+          showInput,
+          setShowInput,
+          showFav,
+          setShowFav,
         }}
       />
       <div className="App">
@@ -33,9 +39,11 @@ function App() {
             haveSearched,
             selectedRecipe,
             setSelectedRecipe,
+            setShowFav,
+            setShowInput,
           }}
         />
-        <MainView {...{ favourite, setFavourite }} />
+        <MainView {...{ favourite, setFavourite, setShowFav, setShowInput }} />
       </div>
     </div>
   );

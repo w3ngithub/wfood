@@ -12,15 +12,18 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { removeFavourite } from "../../redux/actions/action";
 
 const MobileNav = ({
-  setSelectedRecipe,
-  setHaveSearched,
-  setFavourite,
+  showFav,
+  showInput,
   favourite,
+  setShowFav,
+  setShowInput,
+  setFavourite,
+  setHaveSearched,
+  setSelectedRecipe,
 }) => {
   const dispatch = useDispatch();
   const { docs } = useFirestore("Recipes");
-  const [showFav, setShowFav] = useState(false);
-  const [showInput, setShowInput] = useState(false);
+
   const [showModal, setShowModal] = useState(false);
 
   let favouriteList = useSelector((state) => state.favouriteReducer.favourites);
@@ -60,6 +63,10 @@ const MobileNav = ({
     <>
       {showModal && <AddRecipeModal setShowModal={setShowModal} />}
       <div className={classes.mobileNavContainer}>
+        <div
+          className={classes.navBody}
+          onClick={() => setShowFav(false)}
+        ></div>
         <img src={Logo} alt="logo" className={classes.logo} />
         <div className={classes.secondPart}>
           <SearchBarMobile

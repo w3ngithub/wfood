@@ -32,6 +32,10 @@
     line-height: 20px;
   }
 
+  .favouriteList {
+    z-index: 7;
+  }
+
   .notification {
     top: 51px;
     right: 0px;
@@ -76,8 +80,18 @@
     position: absolute;
   }
 
+  .addRecipe {
+    z-index: 7;
+  }
+
   .navIcon {
     font-size: 20px;
     margin-top: 5px;
+  }
+
+  .navBody {
+    height: 100%;
+    width: 100%;
+    position: absolute;
   }
 }

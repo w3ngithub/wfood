@@ -7,6 +7,10 @@ const Navigation = ({
   setHaveSearched,
   setFavourite,
   favourite,
+  showInput,
+  setShowInput,
+  showFav,
+  setShowFav,
 }) => {
   return (
     <div>
@@ -14,7 +18,16 @@ const Navigation = ({
         {...{ setSelectedRecipe, setHaveSearched, setFavourite, favourite }}
       />
       <MobileNav
-        {...{ setSelectedRecipe, setHaveSearched, setFavourite, favourite }}
+        {...{
+          setSelectedRecipe,
+          setHaveSearched,
+          setFavourite,
+          favourite,
+          showInput,
+          setShowInput,
+          showFav,
+          setShowFav,
+        }}
       />
     </div>
   );

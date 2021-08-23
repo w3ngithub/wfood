@@ -278,6 +278,10 @@
     justify-content: center;
   }
 
+  .addIngredientBtn {
+    margin-left: 0px;
+  }
+
   .input,
   .redInput {
     width: 180px;

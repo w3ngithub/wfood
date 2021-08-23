@@ -12,9 +12,9 @@ import {
 } from "react-icons/ai";
 import { addFavourite, removeFavourite } from "../../redux/actions/action";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
-const MainView = ({ setFavourite, favourite }) => {
+const MainView = ({ setFavourite, favourite, setShowFav, setShowInput }) => {
   const dispatch = useDispatch();
 
   let singleRecipe = useSelector((state) => state.getReducer.singleRecipe);
@@ -103,7 +103,13 @@ const MainView = ({ setFavourite, favourite }) => {
   }
 
   return (
-    <div className={classes.mainViewContainer}>
+    <div
+      className={classes.mainViewContainer}
+      onClick={() => {
+        setShowInput(false);
+        setShowFav(false);
+      }}
+    >
       <div className={classes.mainViewWrapper}>
         {!singleRecipe.recipe_id ? (
           <div className={classes.empty}>
@@ -130,7 +136,7 @@ const MainView = ({ setFavourite, favourite }) => {
                     <BsPeople className={classes.icon} />
                     <b>{count}</b> SERVINGS
                   </div>
-                  <div>
+                  <div className={classes.sign}>
                     <AiOutlineMinusCircle
                       className={classes.iconSign}
                       onClick={() => subtractNumber()}

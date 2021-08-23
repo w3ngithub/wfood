@@ -1,16 +1,21 @@
 import classes from "./sidebar.module.css";
+import DataComponent from "./DataComponent.js";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { getData, hideSidebar, showSidebar } from "../../redux/actions/action";
+import { hideSidebar, showSidebar } from "../../redux/actions/action";
 
-const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
+const Sidebar = ({
+  selectedRecipe,
+  setSelectedRecipe,
+  haveSearched,
+  setShowInput,
+  setShowFav,
+}) => {
   const dispatch = useDispatch();
   const [recipes, setRecipes] = useState([]);
 
   let sidebarDisplay = useSelector((state) => state.sidebarReducer.showSidebar);
-
-  console.log(sidebarDisplay);
 
   let r = useSelector((state) => state.searchReducer.recipes);
   let rFromFirebase = useSelector(
@@ -20,24 +25,6 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
   useEffect(() => {
     r ? setRecipes(r.concat(rFromFirebase)) : setRecipes(rFromFirebase);
   }, [r, rFromFirebase]);
-
-  async function getSingleRecipe(recipe, id) {
-    if (!recipe.checkMark) {
-      const response = await fetch(
-        `https://forkify-api.herokuapp.com/api/get?rId=${id}`
-      );
-      const data = await response.json();
-      dispatch(getData(data.recipe));
-    } else {
-      dispatch(getData(recipe));
-    }
-  }
-
-  function focusBackgroundColor(id) {
-    setSelectedRecipe({
-      [id]: true,
-    });
-  }
 
   const filterSearch = (e) => {
     let filteredRecipes = r?.filter((recipe) =>
@@ -61,6 +48,10 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
             ? classes.sidebarContainer
             : classes.noSidebarContainer
         }
+        onClick={() => {
+          setShowInput(false);
+          setShowFav(false);
+        }}
       >
         {haveSearched && (
           <div className={classes.desktopArrow}>
@@ -128,57 +119,11 @@ const Sidebar = ({ selectedRecipe, setSelectedRecipe, haveSearched }) => {
           )}
           {recipes ? (
             recipes.length !== 0 ? (
-              <>
-                <div className={classes.desktopView}>
-                  {recipes.map((recipe) => (
-                    <div
-                      key={recipe.recipe_id}
-                      className={
-                        selectedRecipe[recipe.recipe_id]
-                          ? classes.recipeWrapperWithBakcgroundColor
-                          : classes.recipeWrapper
-                      }
-                      onClick={() => {
-                        getSingleRecipe(recipe, recipe.recipe_id);
-                        focusBackgroundColor(recipe.recipe_id);
-                      }}
-                    >
-                      <img src={recipe.image_url} alt="Food Image" />
-                      <div>
-                        <span style={{ color: "#c73326" }}>{recipe.title}</span>
-                        <span style={{ color: "grey" }}>
-                          {recipe.publisher}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className={classes.mobileView}>
-                  {recipes.map((recipe) => (
-                    <div
-                      key={recipe.recipe_id}
-                      className={
-                        selectedRecipe[recipe.recipe_id]
-                          ? classes.recipeWrapperWithBakcgroundColor
-                          : classes.recipeWrapper
-                      }
-                      onClick={() => {
-                        getSingleRecipe(recipe, recipe.recipe_id);
-                        focusBackgroundColor(recipe.recipe_id);
-                        dispatch(hideSidebar());
-                      }}
-                    >
-                      <img src={recipe.image_url} alt="Food Image" />
-                      <div>
-                        <span style={{ color: "#c73326" }}>{recipe.title}</span>
-                        <span style={{ color: "grey" }}>
-                          {recipe.publisher}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </>
+             
+                <DataComponent
+                  {...{ recipes, selectedRecipe, dispatch, setSelectedRecipe }}
+                />
+           
             ) : null
           ) : null}
         </div>
