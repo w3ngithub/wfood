@@ -119,11 +119,9 @@ const Sidebar = ({
           )}
           {recipes ? (
             recipes.length !== 0 ? (
-             
-                <DataComponent
-                  {...{ recipes, selectedRecipe, dispatch, setSelectedRecipe }}
-                />
-           
+              <DataComponent
+                {...{ recipes, selectedRecipe, dispatch, setSelectedRecipe }}
+              />
             ) : null
           ) : null}
         </div>

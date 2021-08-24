@@ -228,10 +228,10 @@
 
 @media only screen and (max-width: 414px) {
   .modalContainer {
-    width: 100%;
+    width: 100vw;
     z-index: 32;
     height: auto;
-    overflow-y: auto;
+    overflow-y: scroll;
     min-height: 100vh;
   }
 
@@ -241,7 +241,7 @@
 
   .modalWrapper {
     left: 50%;
-    top: 412px;
+    top: 406px;
     width: 85%;
     height: auto;
     display: flex;
@@ -284,7 +284,7 @@
 
   .input,
   .redInput {
-    width: 180px;
+    width: 60%;
     outline: none;
     padding: 6px 8px;
     border-radius: 3px;

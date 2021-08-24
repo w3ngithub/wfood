@@ -148,12 +148,12 @@
     flex: 1;
     height: 100vh;
     overflow-y: auto;
-    margin-top: -51px;
+    margin-top: 0px;
     background-color: #f9f5f3;
   }
 
   .mainViewWrapper {
-    margin-top: 51px;
+    margin-top: 45px;
   }
 
   .image {

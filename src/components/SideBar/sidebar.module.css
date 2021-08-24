@@ -167,12 +167,13 @@
   .sidebarContainer {
     z-index: 5;
     width: 100%;
-    min-height: 100%;
+    min-height: 94.3%;
     height: 91.4vh;
     overflow-y: auto;
     position: absolute;
     background-color: white;
     transition: width 0.2s ease-in;
+    margin-top: 45px;
   }
 
   .search {

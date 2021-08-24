@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./sidebar.module.css";
 import { getData } from "../../redux/actions/action";
 import { hideSidebar } from "../../redux/actions/action";
+
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 const DataComponent = ({
@@ -33,8 +34,8 @@ const DataComponent = ({
   return (
     <>
       <div className={classes.desktopView}>
-        {recipes.map((recipe) => (
-          <LazyLoadComponent>
+        <LazyLoadComponent>
+          {recipes.map((recipe) => (
             <div
               key={recipe.recipe_id}
               className={
@@ -53,8 +54,8 @@ const DataComponent = ({
                 <span style={{ color: "grey" }}>{recipe.publisher}</span>
               </div>
             </div>
-          </LazyLoadComponent>
-        ))}
+          ))}
+        </LazyLoadComponent>
       </div>
       <div className={classes.mobileView}>
         {recipes.map((recipe) => (
