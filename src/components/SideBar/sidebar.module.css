@@ -92,7 +92,7 @@
   position: absolute;
   transition: left 0.2s ease-in;
   border-radius: 0px 20px 20px 0;
-  background-color: rgb(118, 147, 226);
+  background: var(--primary-color);
 }
 
 .sideBarShowBtn {

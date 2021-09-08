@@ -50,7 +50,7 @@ const DataComponent = ({
             >
               <img src={recipe.image_url} alt="Food Image" />
               <div>
-                <span style={{ color: "#c73326" }}>{recipe.title}</span>
+                <span style={{ color: "#1f80d4" }}>{recipe.title}</span>
                 <span style={{ color: "grey" }}>{recipe.publisher}</span>
               </div>
             </div>

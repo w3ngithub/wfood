@@ -6,7 +6,7 @@
   position: relative;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(#f85032, #e4392a);
+  background: var(--primary-color);
 }
 
 .firstPart {

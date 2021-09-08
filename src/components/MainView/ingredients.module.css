@@ -12,7 +12,7 @@
 }
 
 .ingredientContainer h2 {
-  color: #e4392a;
+  color: var(--secondary-color);
   margin-bottom: 50px;
 }
 
@@ -34,7 +34,7 @@
   width: 15px;
   min-width: 15px;
   margin-top: 5px;
-  color: #f38e82;
+  color: var(--secondary-color);
 }
 
 @media screen and (max-width: 1921px) and (min-width: 1708px) {
@@ -51,7 +51,7 @@
 
   .ingredientContainer h2 {
     font-size: 18px;
-    color: #e4392a;
+    color: var(--secondary-color);
     margin-bottom: 40px;
   }
 

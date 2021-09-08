@@ -81,7 +81,7 @@
 .iconSign,
 .heartIcon {
   font-size: 18px;
-  color: rgb(199, 51, 38);
+  color: var(--secondary-color);
 }
 
 .iconSign {
@@ -134,7 +134,9 @@
   margin-top: 20%;
   font-weight: bold;
   text-align: center;
-  color: rgb(199, 51, 38);
+  color: var(--secondary-color);
+  position: absolute;
+  left: 0;
 }
 
 @media only screen and (max-width: 768px) {
@@ -186,7 +188,7 @@
   .icon,
   .iconSign {
     font-size: 16px;
-    color: rgb(199, 51, 38);
+    color: var(--secondary-color);
   }
 
   .heartIcon {

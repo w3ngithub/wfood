@@ -92,7 +92,7 @@
   cursor: pointer;
   padding: 3px 8px;
   border-radius: 4px;
-  background: linear-gradient(#e24428, #cc3123);
+  background: var(--primary-color);
 }
 
 .addIngredientBtn {
@@ -106,7 +106,7 @@
 
 .imageBtn:hover,
 .addIngredientBtn:hover {
-  background: linear-gradient(#fc583c, #e4392a);
+  background: var(--secondary-color);
 }
 
 .uploadButton,
@@ -122,7 +122,7 @@
   border-radius: 30px;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(#3c79fc, #2a5ce4);
+  background: var(--primary-color);
 }
 
 .uploadingButton {
@@ -131,7 +131,7 @@
 }
 
 .uploadButton:hover {
-  background: linear-gradient(#6896f8, #3b6cf3);
+  background: var(--secondary-color);
 }
 
 .closeIcon {
