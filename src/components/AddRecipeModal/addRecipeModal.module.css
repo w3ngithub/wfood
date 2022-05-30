@@ -1,0 +1,322 @@
+.modalContainer {
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+}
+
+.modalBackground {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  transition: all 0.5s;
+  backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalWrapper {
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  display: flex;
+  position: fixed;
+  color: #615551;
+  border-radius: 8px;
+  padding: 15px 30px;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.twoForms {
+  gap: 0px;
+  display: flex;
+}
+
+.form .row {
+  gap: 1.2rem;
+  display: grid;
+  position: relative;
+  align-items: center;
+  margin-bottom: 16px;
+  grid-template-columns: 1fr 2.8fr;
+}
+
+.secondForm .form {
+  height: 230px;
+  overflow-y: auto;
+}
+
+.title {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input,
+.redInput {
+  width: 250px;
+  outline: none;
+  border-radius: 3px;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+}
+
+.row .input::placeholder {
+  font-size: 12px;
+}
+
+.row .input:focus {
+  border: 1px solid #000;
+}
+
+.redInput {
+  border: 1px solid red;
+}
+
+.imageInput {
+  display: none;
+}
+
+.imageBtn,
+.addIngredientBtn {
+  margin: 0;
+  padding: 0;
+  width: 80px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--primary-color);
+}
+
+.addIngredientBtn {
+  width: auto;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  padding: 4px 10px;
+  margin-left: 118px;
+}
+
+.imageBtn:hover,
+.addIngredientBtn:hover {
+  background: var(--secondary-color);
+}
+
+.uploadButton,
+.uploadingButton {
+  gap: 5px;
+  width: 200px;
+  padding: 5px;
+  display: flex;
+  margin: 30px 0;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 30px;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-color);
+}
+
+.uploadingButton {
+  background: linear-gradient(#8a8c8f, #444958);
+  cursor: wait;
+}
+
+.uploadButton:hover {
+  background: var(--secondary-color);
+}
+
+.closeIcon {
+  top: 5px;
+  right: 10px;
+  font-size: 25px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.closeIcon:hover {
+  transform: scale(1.2);
+}
+
+.error,
+.foodName {
+  color: red;
+  font-size: 14px;
+  margin-left: 138px;
+}
+
+.inputError {
+  margin: 0;
+  top: 80%;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+}
+
+.foodName {
+  color: #9c6856;
+}
+
+/* QUERY */
+
+@media screen and (max-width: 1423px) and (min-width: 1281px) {
+  .modalWrapper {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 1601px) and (min-width: 1424px) {
+  .modalWrapper {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1708px) and (min-width: 1601px) {
+  .modalWrapper {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1921px) and (min-width: 1708px) {
+  .modalWrapper {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  .modalWrapper {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .modalWrapper {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modalWrapper {
+    width: 80%;
+  }
+
+  .input,
+  .redInput {
+    width: 140px;
+    outline: none;
+    padding: 6px 8px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+  }
+
+  .redInput {
+    border: 1px solid red;
+  }
+
+  .row label {
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .modalContainer {
+    width: 100vw;
+    z-index: 32;
+    height: auto;
+    overflow-y: scroll;
+    min-height: 100vh;
+  }
+
+  .modalBackground {
+    display: none;
+  }
+
+  .modalWrapper {
+    left: 50%;
+    top: 406px;
+    width: 85%;
+    height: auto;
+    display: flex;
+    margin: 20px 0;
+    color: #615551;
+    overflow-y: auto;
+    padding: 15px 30px;
+    position: absolute;
+    border-radius: 0px;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+  }
+
+  .twoForms {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form .row {
+    gap: 1rem;
+    display: flex;
+    position: relative;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+
+  .title {
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .addIngredientBtn {
+    margin-left: 0px;
+  }
+
+  .input,
+  .redInput {
+    width: 60%;
+    outline: none;
+    padding: 6px 8px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+  }
+
+  .redInput {
+    border: 1px solid red;
+  }
+
+  .imageBtn {
+    margin: 0;
+    padding: 0;
+    width: 80px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: linear-gradient(#e24428, #cc3123);
+  }
+
+  .foodName {
+    color: #9c6856;
+    font-size: 14px;
+    margin-left: 114px;
+    margin-top: -10px;
+    line-height: 2em;
+    max-height: 2em;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+  }
+}

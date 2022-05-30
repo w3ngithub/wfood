@@ -1,0 +1,21 @@
+{
+  "short_name": "WFood",
+  "name": "WFood",
+  "icons": [
+    {
+      "src": "assets/wflogo.svg",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/wf_maskable_logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#007bff",
+  "background_color": "#ffffff"
+}

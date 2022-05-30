@@ -1,0 +1,234 @@
+.sidebarContainer {
+  width: 30%;
+  height: 89vh;
+  overflow-y: auto;
+  transition: width 0.2s ease-in;
+}
+
+.noSidebarContainer {
+  width: 0%;
+  height: 89vh;
+  overflow: hidden;
+  transition: width 0.2s ease-in;
+}
+
+.noSidebarContainer .recipeWrapper {
+  opacity: 0;
+  transition: all 0.1s ease-in;
+}
+
+.sidebarWrapper {
+  display: flex;
+  margin: 18px 0;
+  flex-direction: column;
+}
+
+.recipeWrapper,
+.recipeWrapperWithBakcgroundColor {
+  gap: 20px;
+  opacity: 1;
+  display: flex;
+  cursor: pointer;
+  padding: 10px 15px;
+  align-items: flex-start;
+  transition: all 0.3s ease-in;
+}
+
+.recipeWrapperWithBakcgroundColor {
+  background-color: rgba(233, 193, 112, 0.5);
+}
+
+.recipeWrapper > div,
+.recipeWrapperWithBakcgroundColor > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipeWrapper img,
+.recipeWrapperWithBakcgroundColor img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.recipeWrapper:hover {
+  background-color: rgba(233, 193, 112, 0.5);
+}
+
+.empty {
+  width: 100%;
+  font-size: 18px;
+  margin-top: 100px;
+  text-align: center;
+  color: rgb(255, 170, 0);
+}
+
+.search {
+  display: flex;
+  margin: 10px 0 20px 0;
+  justify-content: center;
+}
+
+.input {
+  width: 80%;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  border-radius: 50px;
+  box-shadow: 0 5px 10px rgba(163, 163, 163, 0.4);
+}
+
+/* Show And Hide Sidebar */
+
+.sideBarHideBtn,
+.sideBarShowBtn {
+  left: 30%;
+  top: 70px;
+  z-index: 3;
+  color: white;
+  cursor: pointer;
+  padding: 3px 8px;
+  position: absolute;
+  transition: left 0.2s ease-in;
+  border-radius: 0px 20px 20px 0;
+  background: var(--primary-color);
+}
+
+.sideBarShowBtn {
+  left: 0%;
+}
+
+.sideBarShowHideBtn:hover {
+  background-color: rgb(68, 117, 180);
+}
+
+.arrowIcon {
+  margin: 0px;
+  font-size: 20px;
+}
+
+.mobileView {
+  display: none;
+}
+
+.sideBarHideBtnEmpty {
+  display: none;
+}
+
+@media screen and (max-width: 1423px) and (min-width: 1281px) {
+  .sidebarContainer {
+    height: 90vh;
+  }
+}
+
+@media screen and (max-width: 1601px) and (min-width: 1424px) {
+  .sidebarContainer {
+    height: 91vh;
+  }
+}
+
+@media screen and (max-width: 1708px) and (min-width: 1601px) {
+  .sidebarContainer {
+    height: 92vh;
+  }
+}
+
+@media screen and (max-width: 1921px) and (min-width: 1708px) {
+  .sidebarContainer {
+    height: 92.5vh;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  .sidebarContainer {
+    height: 94.5vh;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .sidebarContainer {
+    width: 35%;
+    height: 94vh;
+  }
+
+  .sideBarHideBtn,
+  .sideBarShowBtn {
+    left: 35%;
+    top: 80px;
+  }
+
+  .sideBarShowBtn {
+    left: 0%;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .sidebarContainer {
+    z-index: 5;
+    width: 100%;
+    min-height: 94.3%;
+    height: 91.4vh;
+    overflow-y: auto;
+    position: absolute;
+    background-color: white;
+    transition: width 0.2s ease-in;
+    margin-top: 45px;
+  }
+
+  .search {
+    width: 80%;
+    display: block;
+    position: relative;
+    justify-content: none;
+    margin: 10px 0 20px 5%;
+  }
+
+  .input {
+    width: 80%;
+    margin: 0 auto;
+    padding: 8px 14px;
+  }
+
+  .sideBarHideBtn,
+  .sideBarShowBtn,
+  .sideBarHideBtnEmpty {
+    top: 0%;
+    left: 100%;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    display: flex;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    color: rgb(66, 66, 66);
+    background-color: white;
+    transition: left 0.2s ease-in;
+    box-shadow: 0 5px 10px rgba(163, 163, 163, 0.4);
+  }
+
+  .sideBarShowBtn {
+    left: 0%;
+    top: 10.5%;
+  }
+
+  .sideBarHideBtnEmpty {
+    left: 85%;
+    top: 3.5%;
+  }
+
+  .desktopView {
+    display: none;
+  }
+
+  .mobileView {
+    display: block;
+  }
+
+  .desktopArrow {
+    display: none;
+  }
+}

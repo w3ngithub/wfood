@@ -1,0 +1,7 @@
+.App {
+  display: flex;
+}
+:root {
+  --primary-color: linear-gradient(#337ab7, #5490c3);
+  --secondary-color: #1f80d4;
+}

@@ -1,0 +1,137 @@
+.navContainer {
+  z-index: 6;
+  display: flex;
+  color: white;
+  padding: 0px 40px;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--primary-color);
+}
+
+.firstPart {
+  width: 58vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.addPart {
+  gap: 50px;
+  display: flex;
+  padding: 0px 20px;
+  position: relative;
+  align-items: center;
+}
+
+.addPart p {
+  gap: 5px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  transition: all 0.2s ease-in;
+}
+
+.addPart p:hover {
+  color: rgb(221, 221, 221);
+}
+
+.navIcon {
+  font-size: 20px;
+}
+
+/* //Notification */
+
+.notification {
+  top: 62px;
+  height: 0;
+  right: 0px;
+  z-index: 3;
+  opacity: 0;
+  width: 350px;
+  overflow-y: auto;
+  max-height: 450px;
+  position: absolute;
+  background-color: white;
+  transition: all 0.5s ease-in;
+}
+
+.favouriteList {
+  margin: 0;
+  line-height: 62px;
+}
+
+.favouriteList > div {
+  line-height: 20px;
+}
+
+.favouriteList:hover .notification {
+  opacity: 1;
+  height: auto;
+}
+
+.recipeWrapper {
+  gap: 20px;
+  display: flex;
+  cursor: pointer;
+  padding: 10px 15px;
+  align-items: flex-start;
+  transition: all 0.3s ease-in;
+  border-bottom: 1px solid rgba(233, 193, 112, 0.4);
+}
+
+.recipeWrapper > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipeWrapper img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.recipeWrapper:hover {
+  background-color: rgba(233, 193, 112, 0.2);
+}
+
+.closeIcon {
+  right: 5px;
+  z-index: 50;
+  color: grey;
+  font-size: 16px;
+  position: absolute;
+}
+
+.closeIcon:hover {
+  color: red;
+}
+
+.image {
+  width: 340px;
+  margin-left: -100px;
+}
+
+@media only screen and (max-width: 768px) {
+  .navContainer {
+    padding: 0px 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .image {
+    width: 280px;
+    margin-left: -75px;
+  }
+
+  .addPart {
+    gap: 30px;
+    padding: 0px 20px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .navContainer {
+    display: none;
+  }
+}
